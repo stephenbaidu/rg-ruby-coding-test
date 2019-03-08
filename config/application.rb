@@ -15,13 +15,13 @@ module Leaderboards
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.generators do |g|
-      g.test_framework :rspec, {
+    config.generators do |generator|
+      generator.test_framework :rspec, {
         view_specs: false
       }
-      g.system_tests false
-      g.assets false
-      g.factory_bot true
+      generator.system_tests false
+      generator.assets false
+      generator.factory_bot true
     end
   end
 end
