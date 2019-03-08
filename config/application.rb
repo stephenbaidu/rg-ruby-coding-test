@@ -21,6 +21,7 @@ module Leaderboards
       }
       g.system_tests false
       g.assets false
+      g.factory_bot true
     end
   end
 end
