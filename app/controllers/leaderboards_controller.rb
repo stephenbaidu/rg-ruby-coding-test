@@ -46,14 +46,7 @@ class LeaderboardsController < ApplicationController
   end
 
   def add_score
-    username, score = params[:username]
-    score = params[:score]
-    if @leaderboard.entries.where(username: username).exists?
-      entry = @leaderboard.entries.where(username: username).first
-      entry.update(score: score.to_i + entry.score)
-    else
-      @leaderboard.entries.create(username: username, score: score)
-    end
+    AddScoreService.call(@leaderboard, params[:username], params[:score])
     redirect_to @leaderboard, notice: 'Score added'
   end
 
