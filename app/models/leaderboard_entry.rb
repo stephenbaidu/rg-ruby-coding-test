@@ -16,4 +16,7 @@
 
 class LeaderboardEntry < ApplicationRecord
   belongs_to :leaderboard
+
+  validates :username, presence: true
+  validates :score, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
