@@ -1,0 +1,20 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Score</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% leaderboard_entries.each do |leaderboard_entry| %>
+      <tr>
+        <td><%= leaderboard_entry.username %></td>
+        <td><%= leaderboard_entry.score %></td>
+        <td><%= link_to 'Logs', leaderboard_entry %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

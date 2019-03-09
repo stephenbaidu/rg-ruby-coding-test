@@ -7,6 +7,7 @@ class AddScoreService < ServiceBase
 
   def call
     score_entry.with_lock do
+      create_score_log
       score_entry.score += @score
       score_entry.save!
       score_entry.reload
@@ -20,5 +21,9 @@ class AddScoreService < ServiceBase
       @leaderboard.entries.find_or_create_by(username: @username) do |entry|
         entry.score = 0
       end
+  end
+
+  def create_score_log
+    ScoreLog.create!(leaderboard_entry: score_entry, score: @score)
   end
 end

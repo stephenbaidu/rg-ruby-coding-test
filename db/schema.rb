@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190309112633) do
+ActiveRecord::Schema.define(version: 20190309115704) do
 
   create_table "leaderboard_entries", force: :cascade do |t|
     t.integer "leaderboard_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20190309112633) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "score_logs", force: :cascade do |t|
+    t.integer "leaderboard_entry_id", null: false
+    t.integer "score", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["leaderboard_entry_id"], name: "index_score_logs_on_leaderboard_entry_id"
   end
 
 end

@@ -20,6 +20,7 @@ require 'rails_helper'
 RSpec.describe LeaderboardEntry, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:leaderboard) }
+    it { is_expected.to have_many(:score_logs) }
   end
 
   describe 'validations' do

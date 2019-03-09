@@ -17,6 +17,7 @@
 
 class LeaderboardEntry < ApplicationRecord
   belongs_to :leaderboard
+  has_many   :score_logs
 
   validates :username, presence: true, uniqueness: { scope: :leaderboard_id, case_sensitive: false }
   validates :score, presence: true, numericality: { greater_than_or_equal_to: 0 }

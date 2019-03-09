@@ -12,6 +12,10 @@ RSpec.describe AddScoreService do
     it 'increases the score' do
       expect { service.call }.to change { entry.reload.score }.by(score)
     end
+
+    it 'creates a score_log record' do
+      expect { service.call }.to change { ScoreLog.count }.by(1)
+    end
   end
 
   describe 'when username does not exist' do
@@ -20,6 +24,10 @@ RSpec.describe AddScoreService do
     it 'creates entry and updates score to score' do
       service.call
       expect(LeaderboardEntry.first.score).to eq(score)
+    end
+
+    it 'creates a score_log record' do
+      expect { service.call }.to change { ScoreLog.count }.by(1)
     end
   end
 end
