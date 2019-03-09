@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190309111922) do
+ActiveRecord::Schema.define(version: 20190309112633) do
 
   create_table "leaderboard_entries", force: :cascade do |t|
     t.integer "leaderboard_id"
     t.string "username"
-    t.integer "score"
+    t.integer "score", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["leaderboard_id"], name: "index_leaderboard_entries_on_leaderboard_id"

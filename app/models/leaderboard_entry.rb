@@ -3,7 +3,7 @@
 # Table name: leaderboard_entries
 #
 #  id             :integer          not null, primary key
-#  score          :integer
+#  score          :integer          default(0), not null
 #  username       :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
