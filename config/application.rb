@@ -16,9 +16,8 @@ module Leaderboards
     # -- all .rb files in that directory are automatically loaded.
 
     config.generators do |generator|
-      generator.test_framework :rspec, {
-        view_specs: false
-      }
+      generator.test_framework :rspec,
+                               view_specs: false
       generator.system_tests false
       generator.assets false
       generator.factory_bot true

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Leaderboards", type: :request do
-  describe "GET /leaderboards" do
+RSpec.describe 'Leaderboards', type: :request do
+  describe 'GET /leaderboards' do
     let!(:leaderboard_1) { create :leaderboard }
     let!(:leaderboard_2) { create :leaderboard }
 
@@ -9,7 +9,7 @@ RSpec.describe "Leaderboards", type: :request do
       get leaderboards_path
     end
 
-    it "works! (now write some real specs)" do
+    it 'works! (now write some real specs)' do
       expect(response).to have_http_status(200)
     end
 
@@ -19,7 +19,7 @@ RSpec.describe "Leaderboards", type: :request do
     end
   end
 
-  describe "GET /leaderboards/:id" do
+  describe 'GET /leaderboards/:id' do
     let!(:leaderboard) { create :leaderboard }
     let!(:leaderboard_entry_1) { create :leaderboard_entry, leaderboard: leaderboard }
     let!(:leaderboard_entry_2) { create :leaderboard_entry, leaderboard: leaderboard }

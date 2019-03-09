@@ -46,13 +46,14 @@ class LeaderboardEntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_leaderboard_entry
-      @leaderboard_entry = LeaderboardEntry.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def leaderboard_entry_params
-      params.require(:leaderboard_entry).permit(:leaderboard_id, :username, :score)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_leaderboard_entry
+    @leaderboard_entry = LeaderboardEntry.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def leaderboard_entry_params
+    params.require(:leaderboard_entry).permit(:leaderboard_id, :username, :score)
+  end
 end

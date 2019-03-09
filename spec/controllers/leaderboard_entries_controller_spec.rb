@@ -24,69 +24,68 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe LeaderboardEntriesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # LeaderboardEntry. As you add validations to LeaderboardEntry, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # LeaderboardEntriesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      leaderboard_entry = LeaderboardEntry.create! valid_attributes
+  describe 'GET #index' do
+    it 'returns a success response' do
+      _ = LeaderboardEntry.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #show" do
-    it "returns a success response" do
+  describe 'GET #show' do
+    it 'returns a success response' do
       leaderboard_entry = LeaderboardEntry.create! valid_attributes
       get :show, params: {id: leaderboard_entry.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #new" do
-    it "returns a success response" do
+  describe 'GET #new' do
+    it 'returns a success response' do
       get :new, params: {}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
+  describe 'GET #edit' do
+    it 'returns a success response' do
       leaderboard_entry = LeaderboardEntry.create! valid_attributes
       get :edit, params: {id: leaderboard_entry.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new LeaderboardEntry" do
-        expect {
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new LeaderboardEntry' do
+        expect do
           post :create, params: {leaderboard_entry: valid_attributes}, session: valid_session
-        }.to change(LeaderboardEntry, :count).by(1)
+        end.to change(LeaderboardEntry, :count).by(1)
       end
 
-      it "redirects to the created leaderboard_entry" do
+      it 'redirects to the created leaderboard_entry' do
         post :create, params: {leaderboard_entry: valid_attributes}, session: valid_session
         expect(response).to redirect_to(LeaderboardEntry.last)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {leaderboard_entry: invalid_attributes}, session: valid_session
         expect(response).to be_success
@@ -94,48 +93,49 @@ RSpec.describe LeaderboardEntriesController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested leaderboard_entry" do
+      it 'updates the requested leaderboard_entry' do
         leaderboard_entry = LeaderboardEntry.create! valid_attributes
         put :update, params: {id: leaderboard_entry.to_param, leaderboard_entry: new_attributes}, session: valid_session
         leaderboard_entry.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the leaderboard_entry" do
+      it 'redirects to the leaderboard_entry' do
         leaderboard_entry = LeaderboardEntry.create! valid_attributes
-        put :update, params: {id: leaderboard_entry.to_param, leaderboard_entry: valid_attributes}, session: valid_session
+        params = {id: leaderboard_entry.to_param, leaderboard_entry: valid_attributes}
+        put :update, params: params, session: valid_session
         expect(response).to redirect_to(leaderboard_entry)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
         leaderboard_entry = LeaderboardEntry.create! valid_attributes
-        put :update, params: {id: leaderboard_entry.to_param, leaderboard_entry: invalid_attributes}, session: valid_session
+        params = {id: leaderboard_entry.to_param, leaderboard_entry: invalid_attributes}
+        put :update, params: params, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested leaderboard_entry" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested leaderboard_entry' do
       leaderboard_entry = LeaderboardEntry.create! valid_attributes
-      expect {
+      expect do
         delete :destroy, params: {id: leaderboard_entry.to_param}, session: valid_session
-      }.to change(LeaderboardEntry, :count).by(-1)
+      end.to change(LeaderboardEntry, :count).by(-1)
     end
 
-    it "redirects to the leaderboard_entries list" do
+    it 'redirects to the leaderboard_entries list' do
       leaderboard_entry = LeaderboardEntry.create! valid_attributes
       delete :destroy, params: {id: leaderboard_entry.to_param}, session: valid_session
       expect(response).to redirect_to(leaderboard_entries_url)
     end
   end
-
 end
