@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328212903) do
+ActiveRecord::Schema.define(version: 20190309111922) do
 
   create_table "leaderboard_entries", force: :cascade do |t|
     t.integer "leaderboard_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180328212903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["leaderboard_id"], name: "index_leaderboard_entries_on_leaderboard_id"
+    t.index ["username", "leaderboard_id"], name: "index_leaderboard_entries_on_username_and_leaderboard_id", unique: true
   end
 
   create_table "leaderboards", force: :cascade do |t|

@@ -11,7 +11,8 @@
 #
 # Indexes
 #
-#  index_leaderboard_entries_on_leaderboard_id  (leaderboard_id)
+#  index_leaderboard_entries_on_leaderboard_id               (leaderboard_id)
+#  index_leaderboard_entries_on_username_and_leaderboard_id  (username,leaderboard_id) UNIQUE
 #
 
 FactoryBot.define do

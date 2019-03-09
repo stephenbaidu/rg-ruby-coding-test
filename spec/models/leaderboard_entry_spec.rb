@@ -11,7 +11,8 @@
 #
 # Indexes
 #
-#  index_leaderboard_entries_on_leaderboard_id  (leaderboard_id)
+#  index_leaderboard_entries_on_leaderboard_id               (leaderboard_id)
+#  index_leaderboard_entries_on_username_and_leaderboard_id  (username,leaderboard_id) UNIQUE
 #
 
 require 'rails_helper'
@@ -22,7 +23,10 @@ RSpec.describe LeaderboardEntry, type: :model do
   end
 
   describe 'validations' do
+    let(:subject) { create :leaderboard_entry }
+
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:score) }
+    it { should validate_uniqueness_of(:username).scoped_to(:leaderboard_id).case_insensitive }
   end
 end
