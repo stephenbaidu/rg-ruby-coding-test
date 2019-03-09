@@ -18,7 +18,10 @@
   <strong>Score Logs:</strong>
   <ul>
     <% @leaderboard_entry.score_logs.each do |log| %>
-      <li><%= log.score %> scores added</li>
+      <li>
+        <%= log.score %> scores added
+        <%= link_to 'Remove', leaderboard_entry_score_log_path(@leaderboard_entry, log), method: :delete, data: { confirm: 'Are you certain you want to delete this score?' } %>
+      </li>
     <% end -%>
   </ul>
 </div>

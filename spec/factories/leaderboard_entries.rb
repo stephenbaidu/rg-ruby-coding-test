@@ -18,7 +18,7 @@
 FactoryBot.define do
   factory :leaderboard_entry do
     sequence(:username) { |n| "username.#{n}" }
-    score { 0 }
+    score { 1 }
     association :leaderboard, factory: :leaderboard
   end
 end

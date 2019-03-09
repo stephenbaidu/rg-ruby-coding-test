@@ -31,5 +31,9 @@ RSpec.describe 'LeaderboardEntries', type: :request do
       expect(response.body).to include(score_log_1.score.to_s)
       expect(response.body).to include(score_log_2.score.to_s)
     end
+
+    it 'shows Remove button' do
+      expect(response.body).to include('Remove')
+    end
   end
 end
