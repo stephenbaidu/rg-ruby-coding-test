@@ -6,12 +6,8 @@
 </p>
 
 <div>
-  <p>Entries:</p>
-  <ol>
-    <% @leaderboard.entries.sort_by(&:score).reverse.each do |entry| %>
-    <li><%= entry.username %> - <%= entry.score %></li>
-  <% end -%>
-  </ol>
+  <strong>Entries:</strong>
+  <%= render 'leaderboard_entries', leaderboard_entries: @leaderboard.entries.sort_by(&:score).reverse %>
 </div>
 
 <div>

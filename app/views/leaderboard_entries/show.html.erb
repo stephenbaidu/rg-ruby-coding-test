@@ -2,7 +2,7 @@
 
 <p>
   <strong>Leaderboard:</strong>
-  <%= @leaderboard_entry.leaderboard %>
+  <%= @leaderboard_entry.leaderboard.name %>
 </p>
 
 <p>
@@ -14,6 +14,14 @@
   <strong>Score:</strong>
   <%= @leaderboard_entry.score %>
 </p>
+<div>
+  <strong>Score Logs:</strong>
+  <ul>
+    <% @leaderboard_entry.score_logs.each do |log| %>
+      <li><%= log.score %> scores added</li>
+    <% end -%>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_leaderboard_entry_path(@leaderboard_entry) %> |
 <%= link_to 'Back', leaderboard_entries_path %>

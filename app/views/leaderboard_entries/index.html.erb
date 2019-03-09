@@ -15,7 +15,7 @@
   <tbody>
     <% @leaderboard_entries.each do |leaderboard_entry| %>
       <tr>
-        <td><%= leaderboard_entry.leaderboard %></td>
+        <td><%= leaderboard_entry.leaderboard.name %></td>
         <td><%= leaderboard_entry.username %></td>
         <td><%= leaderboard_entry.score %></td>
         <td><%= link_to 'Show', leaderboard_entry %></td>
