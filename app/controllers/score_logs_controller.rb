@@ -4,8 +4,8 @@ class ScoreLogsController < ApplicationController
 
   # DELETE /leaderboard_entries/1/score_logs/1
   def destroy
-    RemoveScoreService.call(@score_log)
-    redirect_to @leaderboard_entry, notice: 'Score was successfully destroyed.'
+    position_diff = RemoveScoreService.call(@score_log)
+    redirect_to @leaderboard_entry, notice: ScoreDiffNotice.call(:added, position_diff)
   end
 
   private

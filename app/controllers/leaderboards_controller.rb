@@ -46,8 +46,8 @@ class LeaderboardsController < ApplicationController
   end
 
   def add_score
-    AddScoreService.call(@leaderboard, params[:username], params[:score])
-    redirect_to @leaderboard, notice: 'Score added'
+    position_diff = AddScoreService.call(@leaderboard, params[:username], params[:score])
+    redirect_to @leaderboard, notice: ScoreDiffNotice.call(:added, position_diff)
   end
 
   private
